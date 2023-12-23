@@ -1,15 +1,15 @@
 
 type GenericDate = string | number | Date;
 
-function isString(unknown): unknown is string {
-    return typeof unknown === 'string' || unknown instanceof String;
+function isString(unknown: GenericDate): unknown is string {
+    return typeof unknown === 'string';
 }
 
-function isNumeric(unknown): unknown is number {
+function isNumeric(unknown: GenericDate): unknown is number {
     return typeof unknown === 'number';
 }
 
-function isDate(unknown): unknown is Date {
+function isDate(unknown: GenericDate): unknown is Date {
     return unknown instanceof Date;
 }
 
