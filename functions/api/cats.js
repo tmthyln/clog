@@ -7,13 +7,22 @@ export async function onRequestGet(context) {
     return Response.json(cats);
 }
 
-
 export async function onRequestPost(context) {
-    // TODO add new cat
+    const {name, birthdate} = await context.request.json();
+    const db = context.env.DB;
+    const results = await db.batch([
+        db.prepare('INSERT INTO cat (name, birthdate) VALUES (?, ?) ON CONFLICT DO UPDATE SET birthdate = ?').bind(name, birthdate, birthdate),
+        db.prepare('SELECT id, name, birthdate FROM cat WHERE name = ?').bind(name),
+    ]);
+
+    return Response.json(results[1][0])
 }
 
 export async function onRequestDelete(context) {
-    // TODO delete cat AND delete their observations
+    const {id} = await context.request.json();
+    await context.env.DB.prepare('DELETE FROM cat WHERE id = ?').bind(id).run();
+
+    return new Response();
 }
 
 export async function onRequestPatch(context) {
