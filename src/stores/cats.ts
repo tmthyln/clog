@@ -52,6 +52,12 @@ export const useCatStore = defineStore('cats', {
                 this.observations.push(...(await obsResponse.json()));
             }
         },
+        switchCat(catId: number) {
+            const foundCat = this.cats.find(cat => cat.id == catId);
+            if (foundCat) {
+                this.currentCat = foundCat;
+            }
+        },
         async addCat(name: string, birthdate: string) {
             const response = await fetch('/api/cats', {
                 method: 'POST',
