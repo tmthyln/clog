@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import {numericDate} from "./dates.ts";
 
-interface Cat {
+export interface Cat {
     id: number,
     name: string,
     birthdate: number,

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import {onMounted} from "vue";
 import {useCatStore} from "./stores/cats.ts";
+import type {Cat} from "./stores/cats.ts";
 
 const catStore = useCatStore();
 
-function switchCat(cat) {
+function switchCat(cat: Cat) {
     catStore.switchCat(cat.id)
 }
 
