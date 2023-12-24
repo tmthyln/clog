@@ -13,10 +13,10 @@ async function addNewCat() {
 </script>
 
 <template>
-  <q-form @submit.prevent="addNewCat">
-    <q-input label="Cat Name" v-model="catName"/>
-    <q-input label="Birth Date" type="date" v-model="birthdate"/>
-    <q-btn label="Register Cat" type="submit"/>
+  <q-form class="row q-pa-sm q-gutter-lg justify-around" @submit.prevent="addNewCat">
+    <q-input class="col-4" label="Cat Name" v-model="catName" dense/>
+    <q-input class="col-4" label="Birth Date" type="date" v-model="birthdate" dense/>
+    <q-btn class="col-2" label="Register Cat" type="submit" dense/>
   </q-form>
 </template>
 

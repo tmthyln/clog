@@ -9,7 +9,7 @@ const catStore = useCatStore();
 <template>
   <div>
     <NewCatForm/>
-
+    <q-separator/>
     <q-list separator>
       <q-item v-for="cat in catStore.cats" :key="cat.id">
         <q-item-section>
