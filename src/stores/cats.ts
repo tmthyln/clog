@@ -70,7 +70,7 @@ export const useCatStore = defineStore('cats', {
 
                 let catExisted = false;
                 for (const cat of this.cats) {
-                    if (cat.id === catInfo) {
+                    if (cat.id === catInfo.id) {
                         cat.name = catInfo.name;
                         cat.birthdate = catInfo.birthdate;
 
