@@ -19,7 +19,7 @@ const catStore = useCatStore();
         </p>
       </header>
       <div class="card-content">
-        Born on {{ objectDate(cat.birthdate).toLocaleDateString() }}
+        Born on {{ objectDate(cat.birthdate).toLocaleDateString() }}.
       </div>
     </div>
   </div>
