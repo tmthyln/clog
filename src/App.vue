@@ -1,57 +1,66 @@
 <script setup lang="ts">
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 import {useCatStore} from "./stores/cats.ts";
 import type {Cat} from "./stores/cats.ts";
 
 const catStore = useCatStore();
 
-function switchCat(cat: Cat) {
-    catStore.switchCat(cat.id)
+function switchCat(event) {
+    const catId = event.target.value;
+    catStore.switchCat(catId)
+    console.log(catStore.currentCat)
 }
+
+const expandMenu = ref(false);
 
 onMounted(catStore.loadCats);
 </script>
 
 <template>
-  <q-layout view="hHh lpR fFf">
+  <div>
 
-    <q-header bordered class="bg-primary text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <q-icon name="pets"/>
-          </q-avatar>
-          Cat Log
-        </q-toolbar-title>
-        <div v-if="catStore.currentCat" class="flex items-center">
-          Current Cat:
-          <q-btn-dropdown
-              :label="catStore.currentCat.name"
-              class="q-ml-sm q-pl-md"
-              dense outline>
-            <q-list>
-              <q-item v-for="cat in catStore.cats" :key="cat.id" clickable v-close-popup @click="switchCat(cat)">
-                <q-item-section><q-item-label>{{ cat.name }}</q-item-label></q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
+    <header>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+
+          <router-link class="navbar-item" :to="{name: 'observations'}">Cat Log</router-link>
+
+          <a role="button" class="navbar-burger" :class="{'is-active': expandMenu}" aria-label="menu" aria-expanded="false" @click="expandMenu = !expandMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-      </q-toolbar>
-    </q-header>
 
-    <q-page-container>
-      <q-page>
-        <q-tabs
-            vertical
-            class="text-secondary">
-          <q-route-tab icon="visibility" label="Observations" :to="{name: 'observations'}"/>
-          <q-route-tab icon="pets" label="Cats" :to="{name: 'cats'}"/>
-        </q-tabs>
-        <router-view/>
-      </q-page>
-    </q-page-container>
+        <div class="navbar-menu" :class="{'is-active': expandMenu}">
+          <div class="navbar-start">
+            <router-link class="navbar-item" :to="{name: 'observations'}" @click="expandMenu = false">
+              Observations
+            </router-link>
 
-  </q-layout>
+            <router-link class="navbar-item" :to="{name: 'cats'}" @click="expandMenu = false">
+              Cats
+            </router-link>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item control">
+              <span class="mr-2">Switch cat:</span>
+              <div class="select">
+                <select :value="catStore.currentCat?.id" @change="switchCat">
+                  <option v-for="cat in catStore.cats" :key="cat.id" :value="cat.id">{{ cat.name }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <router-view/>
+
+  </div>
 </template>
 
 <style scoped>

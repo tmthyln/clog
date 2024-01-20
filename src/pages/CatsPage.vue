@@ -7,20 +7,23 @@ const catStore = useCatStore();
 </script>
 
 <template>
-  <div>
-    <NewCatForm/>
-    <q-separator/>
-    <q-list separator>
-      <q-item v-for="cat in catStore.cats" :key="cat.id">
-        <q-item-section>
-          <q-item-label>{{ cat.name }}</q-item-label>
-          <q-item-label caption>Born on {{ objectDate(cat.birthdate).toLocaleDateString() }}</q-item-label>
-        </q-item-section>
-      </q-item>
-    </q-list>
+  <div class="p-4">
+    <h1 class="title is-2">Your Clowder</h1>
+
+    <NewCatForm class="mt-3 mb-5"/>
+
+    <div v-for="cat in catStore.cats" :key="cat.id" class="card my-3">
+      <header class="card-header">
+        <p class="card-header-title">
+          {{ cat.name }}
+        </p>
+      </header>
+      <div class="card-content">
+        Born on {{ objectDate(cat.birthdate).toLocaleDateString() }}
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-
 </style>

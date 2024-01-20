@@ -13,13 +13,22 @@ async function addNewCat() {
 </script>
 
 <template>
-  <q-form class="row q-pa-sm q-gutter-lg justify-around" @submit.prevent="addNewCat">
-    <q-input class="col-4" label="Cat Name" v-model="catName" dense/>
-    <q-input class="col-4" label="Birth Date" type="date" v-model="birthdate" dense/>
-    <q-btn class="col-2" label="Register Cat" type="submit" dense/>
-  </q-form>
+  <div>
+    <div class="field is-grouped">
+      <p class="control is-expanded">
+        <input class="input" type="text" placeholder="Cat Name" :value="catName" @input="catName = $event.target.value">
+      </p>
+
+      <p class="control is-expanded">
+        <input class="input" type="date" placeholder="Birth Date" :value="birthdate" @input="birthdate = $event.target.value">
+      </p>
+
+      <p class="control">
+        <button class="button is-primary" @click="addNewCat">Register Cat</button>
+      </p>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
 </style>
