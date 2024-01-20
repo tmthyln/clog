@@ -99,6 +99,6 @@ export const useCatStore = defineStore('cats', {
                     catId,
                 })
             })
-        }
+        },
     }
 })
