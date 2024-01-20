@@ -90,15 +90,25 @@ export const useCatStore = defineStore('cats', {
             }
         },
         async addObservation(catId: number, notes: string, date: string) {
-            await fetch('/api/observations', {
+            const response = await fetch('/api/observations', {
                 method: 'POST',
                 body: JSON.stringify({
                     loggedDate: numericDate(new Date()),
                     observedDate: numericDate(date),
                     notes,
                     catId,
-                })
-            })
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+
+                const index = this.cats.findIndex(cat => cat.id === data.id);
+                if (index >= 0)
+                    this.cats[index] = data
+                else
+                    this.cats.push(data);
+            }
         },
     }
 })
