@@ -43,7 +43,7 @@ onMounted(catStore.loadCats);
           </div>
 
           <div class="navbar-end">
-            <div class="navbar-item control">
+            <div class="navbar-item control is-flex is-align-items-baseline">
               <span class="mr-2">Switch cat:</span>
               <div class="select">
                 <select :value="catStore.currentCat?.id" @change="switchCat">
