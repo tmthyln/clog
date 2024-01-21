@@ -7,7 +7,6 @@ const catStore = useCatStore();
 function switchCat(event) {
     const catId = event.target.value;
     catStore.switchCat(catId)
-    console.log(catStore.currentCat)
 }
 
 const expandMenu = ref(false);
