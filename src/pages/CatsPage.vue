@@ -12,16 +12,16 @@ const catStore = useCatStore();
 
     <NewCatForm class="mt-3 mb-5"/>
 
-    <div v-for="cat in catStore.cats" :key="cat.id" class="card my-3">
-      <header class="card-header">
-        <p class="card-header-title">
+    <article v-for="cat in catStore.cats" :key="cat.id" class="message is-link my-3">
+      <header class="message-header">
+        <div class="title is-6 has-text-white">
           {{ cat.name }}
-        </p>
+        </div>
       </header>
-      <div class="card-content">
+      <div class="message-body">
         Born on {{ objectDate(cat.birthdate).toLocaleDateString() }}.
       </div>
-    </div>
+    </article>
   </div>
 </template>
 
