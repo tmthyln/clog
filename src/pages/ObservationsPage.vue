@@ -16,7 +16,7 @@ function addObservation() {
 </script>
 
 <template>
-  <div class="m-4">
+  <div>
     <h1 class="title is-2">
       About {{ catStore.currentCat?.name || 'a Cat' }}
     </h1>

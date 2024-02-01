@@ -7,7 +7,7 @@ const catStore = useCatStore();
 </script>
 
 <template>
-  <div class="p-4">
+  <div>
     <h1 class="title is-2">Your Clowder</h1>
 
     <NewCatForm class="mt-3 mb-5"/>

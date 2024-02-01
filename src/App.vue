@@ -18,7 +18,7 @@ onMounted(catStore.loadCats);
   <div>
 
     <header>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
 
           <router-link class="navbar-item" :to="{name: 'observations'}">Cat Log</router-link>
@@ -42,7 +42,9 @@ onMounted(catStore.loadCats);
           </div>
 
           <div class="navbar-end">
-            <div class="navbar-item control is-flex is-align-items-baseline">
+            <div
+                v-if="catStore.cats.length > 0"
+                class="navbar-item control is-flex is-align-items-baseline">
               <span class="mr-2">Switch cat:</span>
               <div class="select">
                 <select :value="catStore.currentCat?.id" @change="switchCat">
@@ -56,7 +58,9 @@ onMounted(catStore.loadCats);
       </nav>
     </header>
 
-    <router-view/>
+    <section class="section container">
+      <router-view/>
+    </section>
 
   </div>
 </template>
