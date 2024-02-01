@@ -21,7 +21,7 @@ onMounted(catStore.loadCats);
       <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
 
-          <router-link class="navbar-item" :to="{name: 'observations'}">Cat Log</router-link>
+          <div class="navbar-item is-unselectable has-text-weight-bold">Cat Log</div>
 
           <a role="button" class="navbar-burger" :class="{'is-active': expandMenu}" aria-label="menu" aria-expanded="false" @click="expandMenu = !expandMenu">
             <span aria-hidden="true"></span>
