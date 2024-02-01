@@ -49,7 +49,7 @@ function addObservation() {
         </div>
       </div>
 
-      <div class="panel mt-5">
+      <div class="panel mt-6">
         <div class="panel-block" v-for="observation in catStore.observations">
           <div class="columns">
             <small class="column is-narrow">

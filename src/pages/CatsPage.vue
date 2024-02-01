@@ -10,7 +10,7 @@ const catStore = useCatStore();
   <div>
     <h1 class="title is-2">Your Clowder</h1>
 
-    <NewCatForm class="mt-3 mb-5"/>
+    <NewCatForm class="mt-3 mb-6"/>
 
     <article v-for="cat in catStore.cats" :key="cat.id" class="message is-link my-3">
       <header class="message-header">
