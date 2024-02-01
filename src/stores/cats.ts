@@ -103,11 +103,10 @@ export const useCatStore = defineStore('cats', {
             if (response.ok) {
                 const data = await response.json();
 
-                const index = this.cats.findIndex(cat => cat.id === data.id);
-                if (index >= 0)
-                    this.cats[index] = data
-                else
-                    this.cats.push(data);
+                const index = this.observations.findIndex(obs => obs.id === data.id);
+                if (index < 0) {
+                    this.observations.push(data)
+                }
             }
         },
     }
