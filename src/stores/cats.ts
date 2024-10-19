@@ -15,22 +15,16 @@ interface Observation {
     catId: number,
 }
 
-interface CatStoreState {
-    cats: Cat[],
-    observations: Observation[],
-    currentCat: Cat | null,
-}
-
 export const useCatStore = defineStore('cats', {
-    state(): CatStoreState {
+    state: () => {
         return {
-            cats: [],
-            observations: [],
-            currentCat: null,
+            cats: [] as Cat[],
+            observations: [] as Observation[],
+            currentCat: null as Cat | null,
         }
     },
     getters: {
-        currentObservations: (state: CatStoreState) => state.observations.filter(obs => obs.catId === state.currentCat?.id),
+        currentObservations: (state) => state.observations.filter(obs => obs.catId === state.currentCat?.id),
     },
     actions: {
         async loadCats() {
