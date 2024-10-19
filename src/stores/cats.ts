@@ -107,7 +107,11 @@ export const useCatStore = defineStore('cats', {
                 if (index < 0) {
                     this.observations.push(data)
                 }
+
+                return true
             }
+
+            return false
         },
     }
 })

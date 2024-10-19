@@ -8,9 +8,12 @@ const catStore = useCatStore();
 const dateObserved = ref<string>('');
 const observation = ref<string>('');
 
-function addObservation() {
+async function addObservation() {
     if (catStore.currentCat) {
-        catStore.addObservation(catStore.currentCat.id, observation.value, dateObserved.value)
+        const added = await catStore.addObservation(catStore.currentCat.id, observation.value, dateObserved.value)
+        if (added) {
+            observation.value = '';
+        }
     }
 }
 </script>
