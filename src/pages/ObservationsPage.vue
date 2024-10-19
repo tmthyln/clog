@@ -59,7 +59,11 @@ async function addObservation() {
               On {{ objectDate(observation.observedDate).toLocaleDateString() }},
             </small>
             <div class="column">
-              {{ observation.notes }}
+              <p
+                  v-for="singleNote in observation.notes.split('\n')" :key="singleNote"
+                  class="my-0 py-0">
+                {{ singleNote }}
+              </p>
             </div>
           </div>
 
