@@ -53,7 +53,7 @@ async function addObservation() {
       </div>
 
       <div class="panel mt-6">
-        <div class="panel-block" v-for="observation in catStore.observations">
+        <div class="panel-block" v-for="observation in catStore.currentObservations">
           <div class="columns">
             <small class="column is-narrow">
               On {{ objectDate(observation.observedDate).toLocaleDateString() }},
