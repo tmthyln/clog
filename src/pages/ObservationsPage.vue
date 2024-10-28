@@ -2,7 +2,6 @@
 import Observation from "../components/Observation.vue";
 import {useCatStore} from "../stores/cats.ts";
 import {ref} from "vue";
-import {objectDate} from "../stores/dates.ts";
 
 const catStore = useCatStore();
 
