@@ -1,4 +1,6 @@
-
+/**
+ * Endpoint that can be called to ensure the database exists and is set up properly.
+ */
 export async function onRequestPost(context) {
     const db = context.env.DB;
     await db.batch([
