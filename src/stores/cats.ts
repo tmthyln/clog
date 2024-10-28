@@ -7,7 +7,7 @@ export interface Cat {
     birthdate: number,
 }
 
-interface Observation {
+export interface Observation {
     id: number,
     loggedDate: number,
     observedDate: number,

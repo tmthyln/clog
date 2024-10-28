@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Observation from "../components/Observation.vue";
 import {useCatStore} from "../stores/cats.ts";
 import {ref} from "vue";
 import {objectDate} from "../stores/dates.ts";
@@ -53,21 +54,9 @@ async function addObservation() {
       </div>
 
       <div class="panel mt-6">
-        <div class="panel-block" v-for="observation in catStore.currentObservations">
-          <div class="columns">
-            <small class="column is-narrow">
-              On {{ objectDate(observation.observedDate).toLocaleDateString() }},
-            </small>
-            <div class="column">
-              <p
-                  v-for="singleNote in observation.notes.split('\n')" :key="singleNote"
-                  class="my-0 py-0">
-                {{ singleNote }}
-              </p>
-            </div>
-          </div>
-
-        </div>
+        <Observation
+            v-for="observation in catStore.currentObservations" :key="observation.id"
+            :observation="observation"/>
       </div>
     </div>
   </div>
