@@ -1,5 +1,6 @@
 /**
  * Endpoint that can be called to ensure the database exists and is set up properly.
+ * Should really be done via db migrations.
  */
 export async function onRequestPost(context) {
     const db = context.env.DB;
