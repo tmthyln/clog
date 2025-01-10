@@ -65,5 +65,6 @@ onMounted(catStore.loadCats);
   </div>
 </template>
 
-<style scoped>
+<style lang="scss">
+@use "bulma/sass";
 </style>
