@@ -43,7 +43,7 @@ onMounted(catStore.loadCats);
 
           <div class="navbar-end">
             <div
-                v-if="catStore.cats.length > 0"
+                v-if="!catStore.loading && catStore.cats.length > 0"
                 class="navbar-item control is-flex is-align-items-baseline">
               <span class="mr-2">Switch cat:</span>
               <div class="select">

@@ -21,10 +21,34 @@ async function addObservation() {
 <template>
   <div>
     <h1 class="title is-2">
-      About {{ catStore.currentCat?.name || 'a Cat' }}
+      {{ catStore.loading ? 'Rounding up your clowder...' : `About ${catStore.currentCat?.name || 'a Cat'}` }}
     </h1>
 
-    <div v-if="catStore.cats.length === 0">
+    <div v-if="catStore.loading">
+      <div class="field">
+        <label class="label has-skeleton">Date observed</label>
+
+        <div class="control">
+          <input class="input is-skeleton">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label has-skeleton">Observation or event</label>
+
+        <textarea class="textarea is-expanded is-skeleton"/>
+      </div>
+
+      <div class="control">
+        <button class="button is-skeleton">Record</button>
+      </div>
+
+      <div class="mt-6 mb-1 skeleton-block"/>
+      <div class="mt-0 mb-1 skeleton-block"/>
+      <div class="mt-0 mb-1 skeleton-block"/>
+      <div class="mt-0 mb-1 skeleton-block"/>
+    </div>
+    <div v-else-if="catStore.cats.length === 0">
       You don't have any cats yet!
       <router-link :to="{name: 'cats'}">Add some cats first</router-link>, then come back.
     </div>

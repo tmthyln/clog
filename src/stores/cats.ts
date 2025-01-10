@@ -20,6 +20,7 @@ export const useCatStore = defineStore('cats', {
         return {
             cats: [] as Cat[],
             observations: [] as Observation[],
+            loading: true as boolean,
             currentCat: null as Cat | null,
         }
     },
@@ -28,6 +29,7 @@ export const useCatStore = defineStore('cats', {
     },
     actions: {
         async loadCats() {
+            this.loading = true;
             await fetch('/api/all', {method: 'POST'});
 
             const catResponse = await fetch('/api/cats');
@@ -45,6 +47,8 @@ export const useCatStore = defineStore('cats', {
                 this.observations.length = 0;
                 this.observations.push(...(await obsResponse.json()));
             }
+
+            this.loading = false;
         },
         switchCat(catId: number) {
             const foundCat = this.cats.find(cat => cat.id == catId);
