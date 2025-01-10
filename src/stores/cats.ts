@@ -39,6 +39,12 @@ export const useCatStore = defineStore('cats', {
 
                 if (this.cats.length > 0) {
                     this.currentCat = this.cats[0];
+
+                    const locallyStoredCatIdString = localStorage.getItem('clogCurrentCatId')
+                    if (locallyStoredCatIdString !== null) {
+                        const locallyStoredCatId = parseInt(locallyStoredCatIdString)
+                        this.switchCat(locallyStoredCatId);
+                    }
                 }
             }
 
@@ -54,6 +60,7 @@ export const useCatStore = defineStore('cats', {
             const foundCat = this.cats.find(cat => cat.id == catId);
             if (foundCat) {
                 this.currentCat = foundCat;
+                localStorage.setItem('clogCurrentCatId', String(foundCat.id));
             }
         },
         async addCat(name: string, birthdate: string) {
