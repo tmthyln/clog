@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import {ref} from "vue";
 import {useCatStore} from "../stores/cats.ts";
+import { useLocalStorage } from "@vueuse/core/index.cjs";
 
 const catStore = useCatStore();
 
-const catName = ref('');
-const birthdate = ref('');
+const catName = useLocalStorage('clogNewCat_catName', '');
+const birthdate = useLocalStorage('clogNewCat_birthdate', '');
 
 async function addNewCat() {
     await catStore.addCat(catName.value, birthdate.value)
+
+    catName.value = "";
+    birthdate.value = "";
 }
 </script>
 

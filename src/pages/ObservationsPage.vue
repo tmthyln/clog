@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Observation from "../components/Observation.vue";
 import {useCatStore} from "../stores/cats.ts";
-import {ref} from "vue";
+import {useLocalStorage} from "@vueuse/core";
 
 const catStore = useCatStore();
 
-const dateObserved = ref<string>('');
-const observation = ref<string>('');
+const dateObserved = useLocalStorage('clogAddObservation_dateObserved', '');
+const observation = useLocalStorage('clogAddObservation_observation', '');
 
 async function addObservation() {
     if (catStore.currentCat) {
