@@ -79,18 +79,15 @@ export const useCatStore = defineStore('cats', {
             if (response.ok) {
                 const catInfo = await response.json() as Cat;
 
-                let catExisted = false;
-                for (const cat of this.cats) {
-                    if (cat.id === catInfo.id) {
-                        cat.name = catInfo.name;
-                        cat.birthdate = catInfo.birthdate;
-
-                        catExisted = true;
-                    }
-                }
-
-                if (!catExisted) {
+                const existingCat = this.cats.find(cat => cat.id == catInfo.id);
+                if (existingCat) {
+                    existingCat.name = catInfo.name;
+                    existingCat.birthdate = catInfo.birthdate;
+                } else {
                     this.cats.push(catInfo);
+                    if (this.cats.length === 1) {
+                        this.currentCat = catInfo;
+                    }
                 }
             }
         },
