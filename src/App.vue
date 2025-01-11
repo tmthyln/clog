@@ -17,7 +17,7 @@ onMounted(catStore.loadCats);
 <template>
   <div>
 
-    <header>
+    <header >
       <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
 

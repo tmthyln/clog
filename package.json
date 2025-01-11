@@ -1,27 +1,31 @@
 {
-  "name": "clog",
+  "name": "clog-service",
+  "version": "0.0.0",
   "private": true,
-  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "deploy-staging": "npm run build && wrangler deploy --env staging",
+    "deploy-prod": "npm run build && wrangler deploy --env production",
+    "dev": "wrangler dev --env staging & vite",
+    "start": "wrangler dev --env staging & vite",
     "build": "vite build",
-    "typecheck": "vue-tsc",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@vueuse/core": "^12.3.0",
-    "bulma": "^1.0.3",
-    "pinia": "^2.3.0",
-    "vue": "^3.3.11",
-    "vue-router": "^4.5.0"
+    "typegen": "wrangler types --env staging"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250109.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "sass": "^1.83.1",
-    "typescript": "^5.6.3",
-    "vite": "^6.0.6",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7",
     "vite-plugin-compression": "^0.5.1",
-    "vue-tsc": "^2.1.8"
+    "vue-tsc": "^2.2.0",
+    "wrangler": "^3.60.3"
+  },
+  "dependencies": {
+    "@vueuse/core": "^12.4.0",
+    "bulma": "^1.0.3",
+    "pinia": "^2.3.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   }
 }

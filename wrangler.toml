@@ -1,7 +1,9 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "clog-service"
-main = "src/index.ts"
+name = "clog"
+routes = [{ pattern = "clog.timothylin.me", custom_domain = true }]
+main = "src/service.ts"
 compatibility_date = "2025-01-09"
+assets = { directory = "./dist" }
 
 [observability]
 enabled = true
