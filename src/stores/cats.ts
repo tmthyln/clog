@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {numericDate} from "./dates.ts";
+import {numericDate} from "./dates";
 
 export interface Cat {
     id: number,
@@ -35,7 +35,7 @@ export const useCatStore = defineStore('cats', {
             const catResponse = await fetch('/api/cats');
             if (catResponse.ok) {
                 this.cats.length = 0;
-                this.cats.push(...(await catResponse.json()));
+                this.cats.push(...(await catResponse.json() as Cat[]));
 
                 if (this.cats.length > 0) {
                     this.currentCat = this.cats[0];
@@ -51,7 +51,7 @@ export const useCatStore = defineStore('cats', {
             const obsResponse = await fetch('/api/observations');
             if (obsResponse.ok) {
                 this.observations.length = 0;
-                this.observations.push(...(await obsResponse.json()));
+                this.observations.push(...(await obsResponse.json() as Observation[]));
             }
 
             this.loading = false;
@@ -77,7 +77,7 @@ export const useCatStore = defineStore('cats', {
             })
 
             if (response.ok) {
-                const catInfo = await response.json();
+                const catInfo = await response.json() as Cat;
 
                 let catExisted = false;
                 for (const cat of this.cats) {
