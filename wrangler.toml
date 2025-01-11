@@ -1,6 +1,6 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "clog"
-routes = [{ pattern = "clog.timothylin.me", custom_domain = true }]
+route = { pattern = "clog.timothylin.me", custom_domain = true }
 main = "src/service.ts"
 compatibility_date = "2025-01-09"
 assets = { directory = "./dist" }
@@ -11,6 +11,8 @@ enabled = true
 
 [env.staging]
 
+route = { pattern = "staging.clog.timothylin.me", custom_domain = true }
+
 vars = { ENVIRONMENT = "staging" }
 
 d1_databases = [
@@ -18,9 +20,9 @@ d1_databases = [
 ]
 
 
-[env.production]
+[env.prod]
 
-vars = { ENVIRONMENT = "production" }
+vars = { ENVIRONMENT = "prod" }
 
 d1_databases = [
 	{ binding = "DB", database_name = "clog-db-prod", database_id = "f55456df-b2aa-431e-b7d6-fae1e0ceee13" },
