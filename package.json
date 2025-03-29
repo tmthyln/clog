@@ -12,7 +12,7 @@
     "typegen": "wrangler types --env staging"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250109.0",
+    "@cloudflare/workers-types": "^4.20250224.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "sass": "^1.83.4",
     "typescript": "^5.7.3",
