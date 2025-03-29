@@ -6,8 +6,7 @@
   "scripts": {
     "deploy-staging": "npm run build && wrangler deploy --env staging",
     "deploy-prod": "npm run build && wrangler deploy --env prod",
-    "dev": "wrangler dev --env staging & vite",
-    "start": "wrangler dev --env staging & vite",
+    "dev": "wrangler dev --env staging --port 8787 & vite",
     "build": "vite build",
     "typegen": "wrangler types --env staging"
   },
@@ -19,7 +18,7 @@
     "vite": "^6.2.3",
     "vite-plugin-compression": "^0.5.1",
     "vue-tsc": "^2.2.8",
-    "wrangler": "^3.109.1"
+    "wrangler": "^4.6.0"
   },
   "dependencies": {
     "@vueuse/core": "^12.7.0",
