@@ -14,7 +14,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250224.0",
     "@vitejs/plugin-vue": "^5.2.1",
-    "sass": "^1.83.4",
+    "sass": "^1.86.0",
     "typescript": "^5.7.3",
     "vite": "^6.2.3",
     "vite-plugin-compression": "^0.5.1",
