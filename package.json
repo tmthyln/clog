@@ -18,7 +18,7 @@
     "vite": "^6.2.3",
     "vite-plugin-compression": "^0.5.1",
     "vue-tsc": "^2.2.8",
-    "wrangler": "^4.6.0"
+    "wrangler": "^4.22.0"
   },
   "dependencies": {
     "@vueuse/core": "^12.7.0",
